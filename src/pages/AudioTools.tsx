@@ -1,10 +1,13 @@
+import { useState } from "react";
 import { Music, Volume2, FileAudio, Mic, Podcast } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ToolCard from "@/components/ToolCard";
 import AdSpace from "@/components/AdSpace";
+import { WaitlistModal } from "@/components/WaitlistModal";
 
 const AudioTools = () => {
+  const [waitlistOpen, setWaitlistOpen] = useState(false);
   const audioTools = [
     {
       title: "Text to Speech",
@@ -62,7 +65,7 @@ const AudioTools = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Navbar />
+      <Navbar onGetStarted={() => setWaitlistOpen(true)} />
       
       <main className="flex-1 pt-16">
         {/* Hero Section */}
@@ -110,6 +113,7 @@ const AudioTools = () => {
       </main>
 
       <Footer />
+      <WaitlistModal open={waitlistOpen} onOpenChange={setWaitlistOpen} />
     </div>
   );
 };

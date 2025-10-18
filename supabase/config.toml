@@ -1,1 +1,4 @@
 project_id = "cldnjpgcdjfoawzqbskq"
+
+[functions.process-media]
+verify_jwt = false

@@ -1,17 +1,21 @@
+import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import FeaturedTools from "@/components/FeaturedTools";
 import ToolCategories from "@/components/ToolCategories";
 import AdSpace from "@/components/AdSpace";
 import Footer from "@/components/Footer";
+import { WaitlistModal } from "@/components/WaitlistModal";
 import { Card } from "@/components/ui/card";
 import { Shield, Zap, Lock } from "lucide-react";
 
 const Index = () => {
+  const [waitlistOpen, setWaitlistOpen] = useState(false);
+
   return (
     <div className="min-h-screen">
-      <Navbar />
-      <Hero />
+      <Navbar onGetStarted={() => setWaitlistOpen(true)} />
+      <Hero onGetStarted={() => setWaitlistOpen(true)} />
       
       {/* Top Ad Space */}
       <div className="container mx-auto px-4 my-12">
@@ -83,7 +87,10 @@ const Index = () => {
             <p className="text-xl text-muted-foreground">
               Join thousands of creators using MediaFlow to edit and enhance their content
             </p>
-            <button className="px-8 py-4 rounded-xl gradient-primary text-white font-semibold text-lg hover:shadow-lg transition-all duration-300 animate-glow">
+            <button 
+              onClick={() => setWaitlistOpen(true)}
+              className="px-8 py-4 rounded-xl gradient-primary text-white font-semibold text-lg hover:shadow-lg transition-all duration-300 animate-glow"
+            >
               Get Started for Free
             </button>
           </Card>
@@ -91,6 +98,7 @@ const Index = () => {
       </section>
 
       <Footer />
+      <WaitlistModal open={waitlistOpen} onOpenChange={setWaitlistOpen} />
     </div>
   );
 };

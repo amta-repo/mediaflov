@@ -1,10 +1,13 @@
+import { useState } from "react";
 import { Sparkles, Wand2, Image, Video, Maximize, Palette, Users } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ToolCard from "@/components/ToolCard";
 import AdSpace from "@/components/AdSpace";
+import { WaitlistModal } from "@/components/WaitlistModal";
 
 const AITools = () => {
+  const [waitlistOpen, setWaitlistOpen] = useState(false);
   const aiTools = [
     {
       title: "AI Image Generator",
@@ -70,7 +73,7 @@ const AITools = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Navbar />
+      <Navbar onGetStarted={() => setWaitlistOpen(true)} />
       
       <main className="flex-1 pt-16">
         {/* Hero Section */}
@@ -119,6 +122,7 @@ const AITools = () => {
       </main>
 
       <Footer />
+      <WaitlistModal open={waitlistOpen} onOpenChange={setWaitlistOpen} />
     </div>
   );
 };

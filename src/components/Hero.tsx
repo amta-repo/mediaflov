@@ -2,7 +2,11 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Shield, Zap } from "lucide-react";
 import heroImage from "@/assets/hero-illustration.png";
 
-const Hero = () => {
+interface HeroProps {
+  onGetStarted: () => void;
+}
+
+const Hero = ({ onGetStarted }: HeroProps) => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
       {/* Animated background */}
@@ -33,7 +37,11 @@ const Hero = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="gradient-primary text-lg animate-glow">
+              <Button 
+                size="lg" 
+                onClick={onGetStarted}
+                className="gradient-primary text-lg animate-glow"
+              >
                 Get Started
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>

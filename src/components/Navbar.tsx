@@ -3,7 +3,11 @@ import { Link } from "react-router-dom";
 import { Menu, X, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const Navbar = () => {
+interface NavbarProps {
+  onGetStarted: () => void;
+}
+
+const Navbar = ({ onGetStarted }: NavbarProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -31,7 +35,11 @@ const Navbar = () => {
             <Link to="/ai-tools" className="text-sm font-medium hover:text-primary transition-colors">
               AI Tools
             </Link>
-            <Button size="sm" className="gradient-primary">
+            <Button 
+              size="sm" 
+              onClick={onGetStarted}
+              className="gradient-primary"
+            >
               Get Started
             </Button>
           </div>
@@ -77,7 +85,14 @@ const Navbar = () => {
             >
               AI Tools
             </Link>
-            <Button size="sm" className="gradient-primary w-full">
+            <Button 
+              size="sm" 
+              onClick={() => {
+                onGetStarted();
+                setIsMenuOpen(false);
+              }}
+              className="gradient-primary w-full"
+            >
               Get Started
             </Button>
           </div>

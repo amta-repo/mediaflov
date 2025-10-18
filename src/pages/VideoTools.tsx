@@ -1,10 +1,13 @@
+import { useState } from "react";
 import { Video, Scissors, FileVideo, Sparkles, Merge, SplitSquareVertical, Music, Zap, Eraser } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ToolCard from "@/components/ToolCard";
 import AdSpace from "@/components/AdSpace";
+import { WaitlistModal } from "@/components/WaitlistModal";
 
 const VideoTools = () => {
+  const [waitlistOpen, setWaitlistOpen] = useState(false);
   const videoTools = [
     {
       title: "AI Story Generator",
@@ -83,7 +86,7 @@ const VideoTools = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Navbar />
+      <Navbar onGetStarted={() => setWaitlistOpen(true)} />
       
       <main className="flex-1 pt-16">
         {/* Hero Section */}
@@ -131,6 +134,7 @@ const VideoTools = () => {
       </main>
 
       <Footer />
+      <WaitlistModal open={waitlistOpen} onOpenChange={setWaitlistOpen} />
     </div>
   );
 };
