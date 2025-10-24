@@ -12,7 +12,7 @@ const AdSpace = ({ slot, height = "250px" }: AdSpaceProps) => {
         <div className="text-center space-y-2">
           <p className="text-sm text-muted-foreground">Advertisement</p>
           <p className="text-xs text-muted-foreground">Ad Slot: {slot}</p>
-          {/* Google AdSense code would be inserted here */}
+          {ca-pub-825405387603646}
           <div className="text-xs text-muted-foreground mt-4 max-w-xs">
             Replace this component with your Google AdSense script
           </div>
